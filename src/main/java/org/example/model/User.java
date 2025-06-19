@@ -1,6 +1,8 @@
 package org.example.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "users")
@@ -11,12 +13,16 @@ public class User {
     @Column(name = "id")
     private Long id;
 
+    @NotBlank(message = "First name is required")
     @Column(name = "first_name")
     private String firstName;
 
+    @NotBlank(message = "Last name is required")
     @Column(name = "last_name")
     private String lastName;
 
+    @NotBlank(message = "Email is required")
+    @Email(message = "Please enter a valid email address")
     @Column(name = "email")
     private String email;
 
@@ -30,6 +36,8 @@ public class User {
         this.email = email;
     }
 
+    // Getters and Setters
+    // ...
     public Long getId() {
         return id;
     }
@@ -60,15 +68,5 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                '}';
     }
 }
