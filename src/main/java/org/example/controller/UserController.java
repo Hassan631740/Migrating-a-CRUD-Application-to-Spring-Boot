@@ -55,9 +55,8 @@ public class UserController {
         userService.deleteUser(id);
         return "redirect:/users";
     }
-
     @GetMapping("/")
-    public String redirectToUsers() {
-        return "redirect:/users";
+    public String showHomePage() {
+        return "index";
     }
 }
